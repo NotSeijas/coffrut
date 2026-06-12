@@ -792,6 +792,8 @@ a { color: var(--morado-700); }
 
 /* ============ BARRA DE SEDE EN LA CARTA ============ */
 .menu__sede {
+  position: relative;
+  z-index: 60;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -914,7 +916,7 @@ a { color: var(--morado-700); }
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal--delay-1 { transition-delay: 0.15s; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible { opacity: 1; transform: none; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
@@ -951,6 +953,8 @@ a { color: var(--morado-700); }
   .nav__burger { display: flex; }
 
   .fav-card { flex-basis: 100%; }
+  .sede-drop { position: static; }
+  .sede-drop__list { left: 12px; right: 12px; min-width: 0; }
   /* En móvil se navega deslizando (swipe) + puntos; las flechas tapaban la tarjeta */
   .carousel__btn { display: none; }
 
