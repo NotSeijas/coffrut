@@ -400,21 +400,24 @@ a { color: var(--morado-700); }
   padding-block: 5rem;
 }
 
+/* Collage: contenedor con proporción fija y tarjetas en %
+   → siempre queda contenido, nunca se monta sobre el texto */
 .about__media {
   position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 420px;
+  width: min(440px, 100%);
+  aspect-ratio: 1 / 1.08;
+  margin-inline: auto;
 }
 .about__glow {
   position: absolute;
-  width: 320px; height: 320px;
+  inset: 18%;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 212, 40, 0.55), rgba(139, 47, 224, 0.25) 60%, transparent 75%);
   filter: blur(30px);
   animation: blobFloat 12s ease-in-out infinite;
 }
 .about__card {
+  position: absolute;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -422,39 +425,35 @@ a { color: var(--morado-700); }
   border-radius: var(--radius);
   border: 5px solid var(--blanco);
   box-shadow: var(--shadow-lg);
-  transition: transform var(--transition);
 }
 .about__card img { width: 100%; height: 100%; object-fit: cover; }
 .about__card.sin-foto { font-size: 3rem; }
-.about__card:hover { transform: translateY(-8px) rotate(-2deg); z-index: 2; }
 .about__card--big {
-  position: relative;
-  width: min(290px, 70%);
-  aspect-ratio: 3 / 4;
+  inset: 9% 15% 9% 21%;
   transform: rotate(-3deg);
+  z-index: 1;
 }
-.about__card--big:hover { transform: rotate(-3deg) translateY(-8px); }
 .about__card--top {
-  position: absolute;
-  top: 2%; right: 4%;
-  width: 150px;
+  top: 0; right: 0;
+  width: 36%;
   aspect-ratio: 1;
+  z-index: 2;
   animation: floatTop 5s ease-in-out infinite;
 }
 .about__card--bottom {
-  position: absolute;
-  bottom: 0; left: 2%;
-  width: 135px;
+  bottom: 2%; left: 0;
+  width: 32%;
   aspect-ratio: 1;
+  z-index: 2;
   animation: floatBottom 6s ease-in-out -2.5s infinite;
 }
 @keyframes floatTop {
   0%, 100% { transform: rotate(5deg) translateY(0); }
-  50%      { transform: rotate(5deg) translateY(-14px); }
+  50%      { transform: rotate(5deg) translateY(-10px); }
 }
 @keyframes floatBottom {
   0%, 100% { transform: rotate(-6deg) translateY(0); }
-  50%      { transform: rotate(-6deg) translateY(-12px); }
+  50%      { transform: rotate(-6deg) translateY(-8px); }
 }
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }
@@ -471,18 +470,23 @@ a { color: var(--morado-700); }
   gap: 0.6rem;
   margin-top: 1.4rem;
 }
-.about__pills li {
+.about__pills button {
+  font: inherit;
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--tinta);
   background: var(--blanco);
   border: 2px solid #efe6fb;
   border-radius: 999px;
   padding: 0.45rem 1.1rem;
-  font-weight: 800;
-  font-size: 0.92rem;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.about__pills li:hover {
+.about__pills button:hover,
+.about__pills button:focus-visible {
   transform: translateY(-3px);
   border-color: var(--morado-300);
+  box-shadow: 0 8px 18px rgba(109, 18, 201, 0.15);
 }
 
 /* ============ CARRUSEL FAVORITOS ============ */
@@ -773,7 +777,7 @@ a { color: var(--morado-700); }
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
   .about { grid-template-columns: 1fr; }
-  .about__media { min-height: 320px; order: -1; }
+  .about__media { order: -1; max-width: 380px; }
   .visit__inner { grid-template-columns: 1fr; }
   .fav-card { flex-basis: calc((100% - 1.4rem) / 2); }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
@@ -807,10 +811,6 @@ a { color: var(--morado-700); }
   /* En móvil se navega deslizando (swipe) + puntos; las flechas tapaban la tarjeta */
   .carousel__btn { display: none; }
 
-  .about__media { min-height: 360px; }
-  .about__card--big { width: min(240px, 64%); }
-  .about__card--top { width: 116px; right: 0; }
-  .about__card--bottom { width: 104px; left: 0; }
 }
 
 /* ============ REDUCED MOTION ============ */

@@ -269,4 +269,17 @@ document.querySelectorAll(".stats__num").forEach((el) => counterObserver.observe
 
   renderTabs(categorias[0]);
   renderGrid(categorias[0]);
+
+  /* API pública: abrir una categoría desde otras secciones */
+  window.irACategoria = (cat) => {
+    const destino = categorias.includes(cat) ? cat : categorias[0];
+    renderTabs(destino);
+    renderGrid(destino);
+    document.getElementById("carta").scrollIntoView({ behavior: "smooth" });
+  };
 })();
+
+/* ============ PASTILLAS DE "NOSOTROS" → CARTA ============ */
+document.querySelectorAll(".about__pills button[data-cat]").forEach((btn) =>
+  btn.addEventListener("click", () => window.irACategoria(btn.dataset.cat))
+);
