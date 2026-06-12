@@ -404,31 +404,57 @@ a { color: var(--morado-700); }
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 380px;
+  min-height: 420px;
+}
+.about__glow {
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 212, 40, 0.55), rgba(139, 47, 224, 0.25) 60%, transparent 75%);
+  filter: blur(30px);
+  animation: blobFloat 12s ease-in-out infinite;
 }
 .about__card {
+  overflow: hidden;
   display: grid;
   place-items: center;
   background: var(--blanco);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: 5px solid var(--blanco);
+  box-shadow: var(--shadow-lg);
   transition: transform var(--transition);
 }
-.about__card:hover { transform: translateY(-8px) rotate(-2deg); }
-.about__card--big { width: 240px; height: 240px; font-size: 6.5rem; }
+.about__card img { width: 100%; height: 100%; object-fit: cover; }
+.about__card.sin-foto { font-size: 3rem; }
+.about__card:hover { transform: translateY(-8px) rotate(-2deg); z-index: 2; }
+.about__card--big {
+  position: relative;
+  width: min(290px, 70%);
+  aspect-ratio: 3 / 4;
+  transform: rotate(-3deg);
+}
+.about__card--big:hover { transform: rotate(-3deg) translateY(-8px); }
 .about__card--top {
   position: absolute;
-  top: 6%; right: 6%;
-  width: 120px; height: 120px;
-  font-size: 3.2rem;
-  animation: floatY 5s ease-in-out infinite;
+  top: 2%; right: 4%;
+  width: 150px;
+  aspect-ratio: 1;
+  animation: floatTop 5s ease-in-out infinite;
 }
 .about__card--bottom {
   position: absolute;
-  bottom: 4%; left: 4%;
-  width: 110px; height: 110px;
-  font-size: 3rem;
-  animation: floatY 6s ease-in-out -2.5s infinite;
+  bottom: 0; left: 2%;
+  width: 135px;
+  aspect-ratio: 1;
+  animation: floatBottom 6s ease-in-out -2.5s infinite;
+}
+@keyframes floatTop {
+  0%, 100% { transform: rotate(5deg) translateY(0); }
+  50%      { transform: rotate(5deg) translateY(-14px); }
+}
+@keyframes floatBottom {
+  0%, 100% { transform: rotate(-6deg) translateY(0); }
+  50%      { transform: rotate(-6deg) translateY(-12px); }
 }
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }
@@ -778,7 +804,13 @@ a { color: var(--morado-700); }
   .nav__burger { display: flex; }
 
   .fav-card { flex-basis: 100%; }
-  .carousel__btn { width: 40px; height: 40px; font-size: 1.4rem; }
+  /* En móvil se navega deslizando (swipe) + puntos; las flechas tapaban la tarjeta */
+  .carousel__btn { display: none; }
+
+  .about__media { min-height: 360px; }
+  .about__card--big { width: min(240px, 64%); }
+  .about__card--top { width: 116px; right: 0; }
+  .about__card--bottom { width: 104px; left: 0; }
 }
 
 /* ============ REDUCED MOTION ============ */

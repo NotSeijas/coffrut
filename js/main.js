@@ -8,15 +8,20 @@
 (function splash() {
   const el = document.getElementById("splash");
   if (!el) return;
-  const MIN_MS = 1300; // tiempo mínimo visible para que se aprecie la animación
+  const MIN_MS = 2200; // tiempo mínimo visible para que se aprecie la animación
   const t0 = performance.now();
-  window.addEventListener("load", () => {
+
+  function ocultar() {
     const restante = Math.max(0, MIN_MS - (performance.now() - t0));
     setTimeout(() => {
       el.classList.add("splash--out");
       el.addEventListener("transitionend", () => el.remove(), { once: true });
     }, restante);
-  });
+  }
+
+  // En móvil/caché la página puede estar ya cargada cuando corre este script
+  if (document.readyState === "complete") ocultar();
+  else window.addEventListener("load", ocultar);
 })();
 
 /* Destacados del carrusel: se buscan por nombre en la carta,

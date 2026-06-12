@@ -105,9 +105,22 @@
   <!-- ============ NOSOTROS ============ -->
   <section class="about container" id="nosotros">
     <div class="about__media reveal">
-      <div class="about__card about__card--big">🥤</div>
-      <div class="about__card about__card--top">🥪</div>
-      <div class="about__card about__card--bottom">☕</div>
+      <span class="about__glow" aria-hidden="true"></span>
+      <figure class="about__card about__card--big">
+        <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=700&q=80"
+             alt="Jugos y batidos de fruta fresca" loading="lazy"
+             onerror="this.parentElement.classList.add('sin-foto');this.replaceWith('🥤')">
+      </figure>
+      <figure class="about__card about__card--top">
+        <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80"
+             alt="Panini tostado" loading="lazy"
+             onerror="this.parentElement.classList.add('sin-foto');this.replaceWith('🥪')">
+      </figure>
+      <figure class="about__card about__card--bottom">
+        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80"
+             alt="Café con arte latte" loading="lazy"
+             onerror="this.parentElement.classList.add('sin-foto');this.replaceWith('☕')">
+      </figure>
     </div>
     <div class="about__text reveal reveal--delay-1">
       <p class="section-eyebrow">Nosotros</p>
