@@ -147,9 +147,11 @@ document.querySelectorAll(".stats__num").forEach((el) => counterObserver.observe
     (f) => `
     <article class="fav-card">
       <div class="fav-card__emoji">${imgProducto(f)}</div>
-      <h3>${f.nombre}</h3>
-      <p>${f.desc}</p>
-      <span class="fav-card__price">${fmt(f.precio)}</span>
+      <div class="fav-card__body">
+        <h3>${f.nombre}</h3>
+        <p>${f.desc}</p>
+        <span class="fav-card__price">${fmt(f.precio)}</span>
+      </div>
     </article>`
   ).join("");
 
@@ -283,3 +285,65 @@ document.querySelectorAll(".stats__num").forEach((el) => counterObserver.observe
 document.querySelectorAll(".about__pills button[data-cat]").forEach((btn) =>
   btn.addEventListener("click", () => window.irACategoria(btn.dataset.cat))
 );
+
+/* ============ SEDES ============ */
+(function sedes() {
+  const grid = document.getElementById("sedesGrid");
+  const barra = document.getElementById("menuSede");
+  const note = document.getElementById("menuNote");
+  if (!grid) return;
+
+  function render() {
+    const activa = CoffrutData.getSedeActiva();
+
+    /* Tarjetas de sede */
+    grid.innerHTML = CoffrutData.getSedes()
+      .map((s) => {
+        const esActiva = s.id === activa.id;
+        return `
+        <article class="sede-card ${esActiva ? "sede-card--activa" : ""}">
+          ${esActiva ? `<span class="sede-card__badge">✓ Tu sede para pedidos</span>` : ""}
+          <div class="sede-card__map">
+            <iframe title="Mapa de ${s.nombre}" src="${s.mapa}" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="sede-card__body">
+            <h3>${s.nombre}</h3>
+            <p class="sede-card__dir">📍 ${s.direccion}</p>
+            <p class="sede-card__ref">${s.referencia}</p>
+            <div class="sede-card__actions">
+              ${
+                esActiva
+                  ? `<a class="btn btn--yellow btn--sm" href="${s.pedido}" target="_blank" rel="noopener">Pedir en esta sede</a>`
+                  : `<button class="btn btn--ghost btn--sm" data-sede="${s.id}">Elegir esta sede</button>`
+              }
+            </div>
+          </div>
+        </article>`;
+      })
+      .join("");
+
+    grid.querySelectorAll("[data-sede]").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        CoffrutData.setSedeActiva(btn.dataset.sede);
+        render();
+      })
+    );
+
+    /* Barra de sede en la carta */
+    if (barra) {
+      barra.innerHTML = `
+        <span>Estás pidiendo en: <strong>${activa.nombre}</strong></span>
+        <div class="menu__sede-actions">
+          <a class="btn btn--yellow btn--sm" href="${activa.pedido}" target="_blank" rel="noopener">Pedir online</a>
+          <a class="menu__sede-cambiar" href="#sedes">Cambiar sede</a>
+        </div>`;
+    }
+    if (note) {
+      note.innerHTML = `Precios en soles (S/) · Pedidos online: <strong>${activa.nombre}</strong> —
+        <a href="${activa.pedido}" target="_blank" rel="noopener">pedir por delivery</a>`;
+    }
+  }
+
+  render();
+})();

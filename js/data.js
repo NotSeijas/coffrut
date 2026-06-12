@@ -66,6 +66,30 @@ const MENU_BASE = {
   ],
 };
 
+/* ---------- SEDES ----------
+   El campo "pedido" es el link de delivery de cada sede;
+   si Razuri tiene su propio link de napfood, cámbialo aquí. */
+const SEDES = [
+  {
+    id: "delgado",
+    nombre: "Sede Julio C. Delgado",
+    direccion: "Jr. Julio C. Delgado 159, Pucallpa",
+    referencia: "A una cuadra de la Plaza de Armas",
+    mapa: "https://www.google.com/maps?q=Jr.+Julio+C.+Delgado+159,+Pucallpa,+Peru&output=embed",
+    pedido: "https://carta.napfood.com/coffrut",
+  },
+  {
+    id: "razuri",
+    nombre: "Sede Razuri",
+    direccion: "Jr. Razuri 238, Pucallpa 25001",
+    referencia: "Pucallpa, Ucayali",
+    mapa: "https://www.google.com/maps?q=Jr.+Razuri+238,+Pucallpa,+Peru&output=embed",
+    pedido: "https://carta.napfood.com/coffrut",
+  },
+];
+
+const STORE_SEDE = "coffrut_sede";
+
 /* ---------- CAPA DE DATOS ----------
    localStorage guarda:
    - coffrut_custom : productos agregados desde el admin
@@ -138,5 +162,17 @@ const CoffrutData = {
 
   getCategorias() {
     return Object.keys(this.getMenu());
+  },
+
+  /* ---------- Sedes ---------- */
+  getSedes() {
+    return SEDES;
+  },
+  getSedeActiva() {
+    const id = localStorage.getItem(STORE_SEDE);
+    return SEDES.find((s) => s.id === id) || SEDES[0];
+  },
+  setSedeActiva(id) {
+    if (SEDES.some((s) => s.id === id)) localStorage.setItem(STORE_SEDE, id);
   },
 };

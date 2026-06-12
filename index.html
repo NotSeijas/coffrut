@@ -37,7 +37,7 @@
         <a href="#nosotros">Nosotros</a>
         <a href="#favoritos">Favoritos</a>
         <a href="#carta">Carta</a>
-        <a href="#visitanos">Visítanos</a>
+        <a href="#sedes">Sedes</a>
       </nav>
       <a href="#carta" class="btn btn--sm nav__cta">Ver carta</a>
       <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
@@ -71,7 +71,7 @@
       </p>
       <div class="hero__actions">
         <a href="#carta" class="btn btn--yellow">Explorar la carta</a>
-        <a href="#visitanos" class="btn btn--ghost">Cómo llegar</a>
+        <a href="#sedes" class="btn btn--ghost">Nuestras sedes</a>
       </div>
     </div>
 
@@ -166,54 +166,44 @@
     <p class="section-eyebrow reveal">Nuestra carta</p>
     <h2 class="section-title reveal">¿Qué se te antoja hoy?</h2>
 
+    <div class="menu__sede reveal" id="menuSede"><!-- JS: sede activa --></div>
+
     <div class="menu__tabs reveal" id="menuTabs" role="tablist"><!-- JS --></div>
     <div class="menu__grid" id="menuGrid"><!-- JS --></div>
 
-    <p class="menu__note reveal">
-      Precios en soles (S/). Pide por delivery desde
-      <a href="https://carta.napfood.com/coffrut" target="_blank" rel="noopener">carta.napfood.com/coffrut</a>
-    </p>
+    <p class="menu__note reveal" id="menuNote">Precios en soles (S/).</p>
   </section>
 
-  <!-- ============ VISÍTANOS ============ -->
-  <section class="visit" id="visitanos">
-    <div class="container visit__inner">
-      <div class="visit__info reveal">
-        <p class="section-eyebrow section-eyebrow--light">Visítanos</p>
-        <h2 class="section-title section-title--light">Te esperamos en Pucallpa</h2>
+  <!-- ============ SEDES ============ -->
+  <section class="visit" id="sedes">
+    <div class="container">
+      <p class="section-eyebrow section-eyebrow--light reveal">Nuestras sedes</p>
+      <h2 class="section-title section-title--light reveal">Elige tu sede y haz tu pedido</h2>
+      <p class="visit__intro reveal">
+        La carta es la misma en ambas sedes — elige la más cercana para tu pedido o visita.
+      </p>
 
-        <div class="visit__block">
-          <h3>📍 Dirección</h3>
-          <p>Jr. Julio C. Delgado 159<br/>Callería, Pucallpa</p>
-        </div>
+      <div class="sedes__grid reveal" id="sedesGrid"><!-- JS renderiza las sedes --></div>
 
+      <div class="visit__extra reveal">
         <div class="visit__block">
-          <h3>🕖 Horarios</h3>
+          <h3>🕖 Horarios (ambas sedes)</h3>
           <table class="visit__hours">
             <tr><td>Lunes a sábado</td><td>7:00 am – 10:00 pm</td></tr>
             <tr><td>Domingo</td><td>8:00 am – 10:00 pm</td></tr>
           </table>
         </div>
-
         <div class="visit__block">
           <h3>🛵 Delivery</h3>
-          <p>Zonas desde S/ 5.00 ·
-            <a href="https://carta.napfood.com/coffrut" target="_blank" rel="noopener">Pedir online</a>
-          </p>
+          <p>Zonas desde S/ 5.00 · pide online desde la sede que elijas</p>
         </div>
-
-        <a class="btn btn--yellow" href="https://www.instagram.com/coffrut.pe" target="_blank" rel="noopener">
-          Síguenos · @coffrut.pe
-        </a>
-      </div>
-
-      <div class="visit__map reveal reveal--delay-1">
-        <iframe
-          title="Ubicación de Coffrut en Pucallpa"
-          src="https://www.google.com/maps?q=Jr.+Julio+C.+Delgado+159,+Pucallpa,+Peru&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen></iframe>
+        <div class="visit__block">
+          <h3>📲 Síguenos</h3>
+          <div class="visit__social">
+            <a class="btn btn--yellow btn--sm" href="https://www.instagram.com/coffrut.pe" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn btn--ghost btn--sm" href="https://www.tiktok.com/@coffrutjugosycaf" target="_blank" rel="noopener">TikTok</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -223,6 +213,11 @@
     <div class="container footer__inner">
       <a href="#inicio" class="footer__logo">Coffr<span>u</span>t</a>
       <p>Jugos · Batidos · Café · Comida saludable</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/coffrut.pe" target="_blank" rel="noopener">Instagram</a>
+        <span>·</span>
+        <a href="https://www.tiktok.com/@coffrutjugosycaf" target="_blank" rel="noopener">TikTok</a>
+      </div>
       <p class="footer__copy">© 2026 Coffrut — Pucallpa, Perú</p>
     </div>
   </footer>
