@@ -330,14 +330,50 @@ document.querySelectorAll(".about__pills button[data-cat]").forEach((btn) =>
       })
     );
 
-    /* Barra de sede en la carta */
+    /* Barra de sede en la carta (con desplegable para cambiar) */
     if (barra) {
       barra.innerHTML = `
         <span>Estás pidiendo en: <strong>${activa.nombre}</strong></span>
         <div class="menu__sede-actions">
           <a class="btn btn--yellow btn--sm" href="${activa.pedido}" target="_blank" rel="noopener">Pedir online</a>
-          <a class="menu__sede-cambiar" href="#sedes">Cambiar sede</a>
+          <div class="sede-drop">
+            <button class="menu__sede-cambiar" id="sedeDropBtn" aria-expanded="false">
+              Cambiar sede ▾
+            </button>
+            <ul class="sede-drop__list" id="sedeDropList" hidden>
+              ${CoffrutData.getSedes()
+                .map(
+                  (s) => `
+                <li>
+                  <button data-sede-drop="${s.id}" class="${s.id === activa.id ? "activa" : ""}">
+                    ${s.id === activa.id ? "✓ " : ""}${s.nombre}
+                    <small>${s.direccion}</small>
+                  </button>
+                </li>`
+                )
+                .join("")}
+              <li class="sede-drop__ver"><a href="#sedes">Ver sedes en el mapa</a></li>
+            </ul>
+          </div>
         </div>`;
+
+      const dropBtn = document.getElementById("sedeDropBtn");
+      const dropList = document.getElementById("sedeDropList");
+
+      dropBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const abierto = !dropList.hidden;
+        dropList.hidden = abierto;
+        dropBtn.setAttribute("aria-expanded", String(!abierto));
+      });
+      document.addEventListener("click", () => { dropList.hidden = true; }, { once: true });
+
+      dropList.querySelectorAll("[data-sede-drop]").forEach((b) =>
+        b.addEventListener("click", () => {
+          CoffrutData.setSedeActiva(b.dataset.sedeDrop);
+          render();
+        })
+      );
     }
     if (note) {
       note.innerHTML = `Precios en soles (S/) · Pedidos online: <strong>${activa.nombre}</strong> —

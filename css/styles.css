@@ -812,12 +812,74 @@ a { color: var(--morado-700); }
   gap: 1rem;
 }
 .menu__sede-cambiar {
+  font: inherit;
   font-weight: 800;
   font-size: 0.92rem;
   color: var(--rosa);
-  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0;
 }
 .menu__sede-cambiar:hover { text-decoration: underline; }
+
+/* Desplegable de sedes */
+.sede-drop { position: relative; }
+.sede-drop__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 50;
+  min-width: 280px;
+  list-style: none;
+  background: var(--blanco);
+  border: 2px solid #efe6fb;
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  animation: dropIn 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+.sede-drop__list button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-weight: 800;
+  color: var(--morado-900);
+  background: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.sede-drop__list button:hover { background: #f6efff; }
+.sede-drop__list button.activa { color: var(--morado-700); background: #f3e9ff; }
+.sede-drop__list button small {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--tinta-60);
+}
+.sede-drop__ver {
+  border-top: 1px solid #f0e8fb;
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+}
+.sede-drop__ver a {
+  display: block;
+  padding: 0.55rem 0.8rem;
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--rosa);
+  text-decoration: none;
+  border-radius: 10px;
+}
+.sede-drop__ver a:hover { background: #fff0f9; }
 
 /* ============ FOOTER ============ */
 .footer {
