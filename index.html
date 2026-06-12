@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffrut — Jugos, Batidos & Café | Pucallpa</title>
+  <meta name="description" content="Coffrut: bar de zumos, batidos, café y comida saludable en Pucallpa. Jr. Julio C. Delgado 159. Lunes a domingo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ PANTALLA DE CARGA ============ -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash__logo">
+      Coffr<span>u</span>t
+      <svg class="splash__swoosh" viewBox="0 0 420 36">
+        <path class="splash__path" d="M12 28 Q 210 -6 408 18" fill="none" stroke="#FFD428" stroke-width="11" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="splash__dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#inicio" class="nav__logo">
+        Coffr<span class="nav__logo-u">u</span>t
+        <svg class="nav__swoosh" viewBox="0 0 120 14" aria-hidden="true">
+          <path d="M4 10 Q 60 -2 116 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#favoritos">Favoritos</a>
+        <a href="#carta">Carta</a>
+        <a href="#visitanos">Visítanos</a>
+      </nav>
+      <a href="#carta" class="btn btn--sm nav__cta">Ver carta</a>
+      <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero__blobs" aria-hidden="true">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+      <span class="blob blob--4"></span>
+    </div>
+
+    <div class="hero__particles" id="heroParticles" aria-hidden="true"></div>
+
+    <div class="hero__content container">
+      <p class="hero__eyebrow">Bar de zumos · batidos · café — Pucallpa</p>
+      <h1 class="hero__title">
+        Coffr<span class="hero__title-u">u</span>t
+        <svg class="hero__swoosh" viewBox="0 0 420 36" aria-hidden="true">
+          <path id="swooshPath" d="M12 28 Q 210 -6 408 18" fill="none" stroke="#FFD428" stroke-width="11" stroke-linecap="round"/>
+        </svg>
+      </h1>
+      <p class="hero__sub">
+        Fruta fresca, café de verdad y comida que te hace bien.
+        Todos los días, de la mañana a la noche.
+      </p>
+      <div class="hero__actions">
+        <a href="#carta" class="btn btn--yellow">Explorar la carta</a>
+        <a href="#visitanos" class="btn btn--ghost">Cómo llegar</a>
+      </div>
+    </div>
+
+    <div class="hero__wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,80 1440,30 L1440,90 L0,90 Z" fill="var(--crema)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats container reveal">
+    <div class="stats__item">
+      <span class="stats__num" data-count="50" data-prefix="+">0</span>
+      <span class="stats__label">productos en carta</span>
+    </div>
+    <div class="stats__item">
+      <span class="stats__num" data-count="15">0</span>
+      <span class="stats__label">horas abiertos al día</span>
+    </div>
+    <div class="stats__item">
+      <span class="stats__num" data-count="7">0</span>
+      <span class="stats__label">días a la semana</span>
+    </div>
+    <div class="stats__item">
+      <span class="stats__num" data-count="100" data-suffix="%">0</span>
+      <span class="stats__label">fruta fresca</span>
+    </div>
+  </section>
+
+  <!-- ============ NOSOTROS ============ -->
+  <section class="about container" id="nosotros">
+    <div class="about__media reveal">
+      <div class="about__card about__card--big">🥤</div>
+      <div class="about__card about__card--top">🥪</div>
+      <div class="about__card about__card--bottom">☕</div>
+    </div>
+    <div class="about__text reveal reveal--delay-1">
+      <p class="section-eyebrow">Nosotros</p>
+      <h2 class="section-title">Lo fresco y lo rico,<br/>en un solo lugar</h2>
+      <p>
+        En <strong>Coffrut</strong> creemos que comer bien no tiene que ser aburrido.
+        Preparamos jugos y batidos con fruta de la región, café para empezar el día
+        con energía, y una carta que va desde paninis y triples hasta bowls y
+        ensaladas pensadas para cuidarte.
+      </p>
+      <p>
+        Nos encuentras en el centro de Pucallpa, todos los días desde las 7 de la
+        mañana. Ven a desayunar, almorzar saludable o darte un gusto por la noche.
+      </p>
+      <ul class="about__pills">
+        <li>🍊 Jugos & batidos</li>
+        <li>🥗 Saludables detox</li>
+        <li>🥐 Desayunos</li>
+        <li>☕ Café</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CARRUSEL FAVORITOS ============ -->
+  <section class="favs" id="favoritos">
+    <div class="container">
+      <p class="section-eyebrow section-eyebrow--light reveal">Los más pedidos</p>
+      <h2 class="section-title section-title--light reveal">Favoritos de la casa</h2>
+    </div>
+
+    <div class="carousel reveal" id="carousel">
+      <button class="carousel__btn carousel__btn--prev" id="carPrev" aria-label="Anterior">‹</button>
+      <div class="carousel__viewport" id="carViewport">
+        <div class="carousel__track" id="carTrack"><!-- JS renderiza las tarjetas --></div>
+      </div>
+      <button class="carousel__btn carousel__btn--next" id="carNext" aria-label="Siguiente">›</button>
+    </div>
+    <div class="carousel__dots" id="carDots"></div>
+  </section>
+
+  <!-- ============ CARTA ============ -->
+  <section class="menu container" id="carta">
+    <p class="section-eyebrow reveal">Nuestra carta</p>
+    <h2 class="section-title reveal">¿Qué se te antoja hoy?</h2>
+
+    <div class="menu__tabs reveal" id="menuTabs" role="tablist"><!-- JS --></div>
+    <div class="menu__grid" id="menuGrid"><!-- JS --></div>
+
+    <p class="menu__note reveal">
+      Precios en soles (S/). Pide por delivery desde
+      <a href="https://carta.napfood.com/coffrut" target="_blank" rel="noopener">carta.napfood.com/coffrut</a>
+    </p>
+  </section>
+
+  <!-- ============ VISÍTANOS ============ -->
+  <section class="visit" id="visitanos">
+    <div class="container visit__inner">
+      <div class="visit__info reveal">
+        <p class="section-eyebrow section-eyebrow--light">Visítanos</p>
+        <h2 class="section-title section-title--light">Te esperamos en Pucallpa</h2>
+
+        <div class="visit__block">
+          <h3>📍 Dirección</h3>
+          <p>Jr. Julio C. Delgado 159<br/>Callería, Pucallpa</p>
+        </div>
+
+        <div class="visit__block">
+          <h3>🕖 Horarios</h3>
+          <table class="visit__hours">
+            <tr><td>Lunes a sábado</td><td>7:00 am – 10:00 pm</td></tr>
+            <tr><td>Domingo</td><td>8:00 am – 10:00 pm</td></tr>
+          </table>
+        </div>
+
+        <div class="visit__block">
+          <h3>🛵 Delivery</h3>
+          <p>Zonas desde S/ 5.00 ·
+            <a href="https://carta.napfood.com/coffrut" target="_blank" rel="noopener">Pedir online</a>
+          </p>
+        </div>
+
+        <a class="btn btn--yellow" href="https://www.instagram.com/coffrut.pe" target="_blank" rel="noopener">
+          Síguenos · @coffrut.pe
+        </a>
+      </div>
+
+      <div class="visit__map reveal reveal--delay-1">
+        <iframe
+          title="Ubicación de Coffrut en Pucallpa"
+          src="https://www.google.com/maps?q=Jr.+Julio+C.+Delgado+159,+Pucallpa,+Peru&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#inicio" class="footer__logo">Coffr<span>u</span>t</a>
+      <p>Jugos · Batidos · Café · Comida saludable</p>
+      <p class="footer__copy">© 2026 Coffrut — Pucallpa, Perú</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

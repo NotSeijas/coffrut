@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffrut — Panel de Administración</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- ============ LOGIN ============ -->
+  <div class="login" id="loginScreen">
+    <form class="login__card" id="loginForm">
+      <div class="login__logo">Coffr<span>u</span>t</div>
+      <h1>Panel de administración</h1>
+      <p>Acceso restringido al personal de Coffrut.</p>
+      <input type="password" id="loginPass" placeholder="Contraseña" autocomplete="current-password" required />
+      <button type="submit" class="btn-admin btn-admin--primary">Ingresar</button>
+      <p class="login__error" id="loginError" hidden>Contraseña incorrecta</p>
+      <a class="login__back" href="index.html">← Volver a la página</a>
+    </form>
+  </div>
+
+  <!-- ============ PANEL ============ -->
+  <div class="panel" id="panel" hidden>
+    <header class="panel__top">
+      <div class="panel__logo">Coffr<span>u</span>t <small>admin</small></div>
+      <div class="panel__top-actions">
+        <a href="index.html" class="btn-admin btn-admin--ghost">Ver página</a>
+        <button class="btn-admin btn-admin--ghost" id="btnLogout">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="panel__main">
+
+      <!-- Formulario de producto -->
+      <section class="card">
+        <h2 id="formTitle">Agregar producto</h2>
+        <form id="prodForm" class="prod-form">
+          <div class="prod-form__grid">
+            <label>
+              Categoría
+              <div class="cat-row">
+                <select id="prodCat"></select>
+                <input type="text" id="prodCatNueva" placeholder="…o escribe una nueva" />
+              </div>
+            </label>
+            <label>
+              Nombre del producto
+              <input type="text" id="prodNombre" placeholder="Ej. Panini Coffrut" required maxlength="60" />
+            </label>
+            <label>
+              Precio (S/)
+              <input type="number" id="prodPrecio" placeholder="9.90" min="0" step="0.10" required />
+            </label>
+            <label class="prod-form__full">
+              Breve descripción
+              <input type="text" id="prodDesc" placeholder="Ej. Pollo + queso + tomate" maxlength="120" />
+            </label>
+            <label class="prod-form__full">
+              Foto del producto
+              <input type="file" id="prodFoto" accept="image/*" />
+            </label>
+          </div>
+
+          <div class="prod-form__preview" id="fotoPreview" hidden>
+            <img id="fotoPreviewImg" alt="Vista previa" />
+            <button type="button" class="btn-admin btn-admin--danger btn-admin--sm" id="btnQuitarFoto">Quitar foto</button>
+          </div>
+
+          <div class="prod-form__actions">
+            <button type="submit" class="btn-admin btn-admin--primary" id="btnGuardar">Guardar producto</button>
+            <span class="prod-form__msg" id="formMsg"></span>
+          </div>
+        </form>
+      </section>
+
+      <!-- Lista de productos -->
+      <section class="card">
+        <div class="card__head">
+          <h2>Productos en la carta</h2>
+          <input type="search" id="buscar" placeholder="Buscar producto…" />
+        </div>
+        <p class="card__hint">
+          Los productos <strong>base</strong> vienen del código (js/data.js); puedes ocultarlos de la carta.
+          Los <strong>agregados</strong> se guardan en este navegador y puedes eliminarlos.
+        </p>
+        <div id="listaProductos"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
